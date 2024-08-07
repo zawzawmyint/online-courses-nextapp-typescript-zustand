@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { Button } from "../ui/button";
 import CategorySearch from "../courses/FilterAndSearch/CategorySearch";
 
@@ -10,12 +10,16 @@ const HomeSection = () => {
       </h2>
       <p className="leading-7">Make changes to your life here!</p>
       <div className="flex flex-wrap gap-2">
-        <CategorySearch category="front-dev">
-          <Button variant={"secondary"}>Frontend Development</Button>
-        </CategorySearch>
-        <CategorySearch category="machine-learning">
-          <Button variant={"secondary"}>Machine Learning</Button>
-        </CategorySearch>
+        <Suspense fallback={<div></div>}>
+          <CategorySearch category="front-dev">
+            <Button variant={"secondary"}>Frontend Development</Button>
+          </CategorySearch>
+        </Suspense>
+        <Suspense fallback={<div></div>}>
+          <CategorySearch category="machine-learning">
+            <Button variant={"secondary"}>Machine Learning</Button>
+          </CategorySearch>
+        </Suspense>
       </div>
     </div>
   );
