@@ -1,0 +1,356 @@
+const users = [
+  {
+    id: "410544b2-4001-4271-9855-fec4b6a6442a",
+    name: "User",
+    email: "user@nextmail.com",
+    password: "123456",
+  },
+];
+
+const customers = [
+  {
+    id: "3958dc9e-712f-4377-85e9-fec4b6a6442a",
+    name: "Delba de Oliveira",
+    email: "delba@oliveira.com",
+    image_url: "/customers/delba-de-oliveira.png",
+  },
+  {
+    id: "3958dc9e-742f-4377-85e9-fec4b6a6442a",
+    name: "Lee Robinson",
+    email: "lee@robinson.com",
+    image_url: "/customers/lee-robinson.png",
+  },
+  {
+    id: "3958dc9e-737f-4377-85e9-fec4b6a6442a",
+    name: "Hector Simpson",
+    email: "hector@simpson.com",
+    image_url: "/customers/hector-simpson.png",
+  },
+  {
+    id: "50ca3e18-62cd-11ee-8c99-0242ac120002",
+    name: "Steven Tey",
+    email: "steven@tey.com",
+    image_url: "/customers/steven-tey.png",
+  },
+  {
+    id: "3958dc9e-787f-4377-85e9-fec4b6a6442a",
+    name: "Steph Dietz",
+    email: "steph@dietz.com",
+    image_url: "/customers/steph-dietz.png",
+  },
+  {
+    id: "76d65c26-f784-44a2-ac19-586678f7c2f2",
+    name: "Michael Novotny",
+    email: "michael@novotny.com",
+    image_url: "/customers/michael-novotny.png",
+  },
+  {
+    id: "d6e15727-9fe1-4961-8c5b-ea44a9bd81aa",
+    name: "Evil Rabbit",
+    email: "evil@rabbit.com",
+    image_url: "/customers/evil-rabbit.png",
+  },
+  {
+    id: "126eed9c-c90c-4ef6-a4a8-fcf7408d3c66",
+    name: "Emil Kowalski",
+    email: "emil@kowalski.com",
+    image_url: "/customers/emil-kowalski.png",
+  },
+  {
+    id: "cc27c14a-0acf-4f4a-a6c9-d45682c144b9",
+    name: "Amy Burns",
+    email: "amy@burns.com",
+    image_url: "/customers/amy-burns.png",
+  },
+  {
+    id: "13d07535-c59e-4157-a011-f8d2ef4e0cbb",
+    name: "Balazs Orban",
+    email: "balazs@orban.com",
+    image_url: "/customers/balazs-orban.png",
+  },
+];
+const categories = [
+  {
+    category_id: "web-dev",
+    category: "Web Development",
+  },
+  {
+    category_id: "front-dev",
+    category: "Front End Development",
+  },
+  {
+    category_id: "machine-learning",
+    category: "Machine Learning",
+  },
+  {
+    category_id: "back-dev",
+    category: "Back End Development",
+  },
+];
+
+const courses = [
+  {
+    customer_id: customers[0].id,
+    category_id: "front-dev",
+    title: "Reactjs & Redux Toolkit",
+    description:
+      "Dive into the world of React.js and master state management with Redux Toolkit. This comprehensive course is designed to help you build dynamic and high-performing web applications. Gain practical experience through hands-on lessons and real-world projects.",
+    lessons: JSON.stringify([
+      "Introduction to React.js",
+      "JSX and Component Basics",
+      "Advanced React Concepts",
+      "State Management with Redux",
+      "Redux Toolkit Essentials",
+      "Advanced Redux Toolkit Features",
+      "Connecting Redux to React Components",
+      "Building a Real-World Application",
+      "Testing and Debugging",
+      "Deployment and Performance Optimization",
+    ]),
+    price: 149.99,
+    image_url: "/courses/react_course.jpg",
+  },
+  {
+    customer_id: customers[1].id,
+    category_id: "machine-learning",
+    title: "Machine Learning",
+    description:
+      "Unlock the potential of data with our comprehensive Machine Learning course. This course covers essential algorithms and techniques, helping you transform raw data into actionable insights. Ideal for beginners and those looking to enhance their data science skills, each lesson provides practical, hands-on experience.",
+    lessons: JSON.stringify([
+      "Introduction to Machine Learning",
+      "Data Preprocessing",
+      "Supervised Learning",
+      "Unsupervised Learning",
+      "Model Evaluation and Selection",
+      "Neural Networks and Deep Learning",
+      "Natural Language Processing",
+      "Time Series Analysis",
+      "Reinforcement Learning",
+      "Project: Building a Machine Learning Application",
+    ]),
+    price: 249.99,
+    image_url: "/courses/ml_course.png",
+  },
+  {
+    customer_id: customers[1].id,
+    category_id: "back-dev",
+    title: "C Programming",
+    description:
+      "Master the fundamentals of programming with our in-depth C Programming course. This course provides a solid foundation in C, one of the most powerful and widely-used programming languages. Perfect for beginners and those looking to strengthen their programming skills, each lesson includes practical exercises and real-world applications.",
+    lessons: JSON.stringify([
+      "Introduction to C Programming",
+      "Data Types and Variables",
+      "Operators and Expressions",
+      "Control Structures",
+      "Functions in C",
+      "Arrays and Strings",
+      "Pointers and Memory Management",
+      "Structures and Unions",
+      "File Input and Output",
+      "Project: Building a Complete C Application",
+    ]),
+    price: 149.99,
+    image_url: "/courses/c_course.png",
+  },
+  {
+    customer_id: customers[1].id,
+    category_id: "machine-learning",
+    title: "Data Analysis",
+    description:
+      "Elevate your skills in Data Analysis with this comprehensive course. Learn to extract meaningful insights from complex datasets using industry-standard tools and techniques. Ideal for aspiring data analysts and professionals looking to enhance their analytical capabilities, each lesson is designed to provide practical, hands-on experience.",
+    lessons: JSON.stringify([
+      "Introduction to Data Analysis",
+      "Data Collection and Cleaning",
+      "Exploratory Data Analysis (EDA)",
+      "Data Wrangling and Transformation",
+      "Statistical Analysis",
+      "Data Visualization",
+      "Introduction to Machine Learning for Data Analysis",
+      "Time Series Analysis",
+      "Advanced Data Analysis Techniques",
+      "Project: Comprehensive Data Analysis",
+    ]),
+    price: 249.99,
+    image_url: "/courses/data_analysis_course.jpg",
+  },
+  {
+    customer_id: customers[1].id,
+    category_id: "front-dev",
+    title: "Front end Basic",
+    description:
+      "Embark on your journey to becoming a front-end developer with our Front End Basic course. Learn the core technologies and principles that power the web, including HTML, CSS, and JavaScript. This course is perfect for beginners and those looking to solidify their foundational knowledge, featuring hands-on projects and practical examples.",
+    lessons: JSON.stringify([
+      "Introduction to Front-End Development",
+      "HTML Fundamentals",
+      "CSS Basics",
+      "Responsive Web Design",
+      "JavaScript Essentials",
+      "DOM Manipulation",
+      "Advanced CSS Techniques",
+      "Introduction to Web APIs",
+      "Version Control with Git",
+      "Project: Building a Simple Website",
+    ]),
+    price: 149.99,
+    image_url: "/courses/front_basic.png",
+  },
+  {
+    customer_id: customers[1].id,
+    category_id: "machine-learning",
+    title: "Python for Machine Learning",
+    description:
+      "Discover the power of Python for Machine Learning in this comprehensive course. Learn to leverage Python’s rich ecosystem of libraries to build, evaluate, and deploy machine learning models. Designed for both beginners and those looking to enhance their skills, this course offers practical insights and hands-on projects to help you master machine learning with Python.",
+    lessons: JSON.stringify([
+      "Introduction to Python for Machine Learning",
+      "Python Basics for Data Science",
+      "Data Visualization with Python",
+      "Introduction to Machine Learning",
+      "Data Preparation and Feature Engineering",
+      "Building Regression Models",
+      "Building Classification Models",
+      "Clustering and Dimensionality Reduction",
+      "Advanced Topics in Machine Learning",
+      "Project: Developing a Machine Learning Application",
+    ]),
+    price: 249.99,
+    image_url: "/courses/python_course.png",
+  },
+  {
+    customer_id: customers[1].id,
+    category_id: "web-dev",
+    title: "Web Development",
+    description:
+      "Embark on a comprehensive journey into Web Development with this all-encompassing course. Learn to build robust, dynamic websites from scratch using HTML, CSS, JavaScript, and modern web frameworks. Perfect for beginners and those looking to deepen their skills, each lesson includes hands-on projects and real-world applications.",
+    lessons: JSON.stringify([
+      "Introduction to Web Development",
+      "HTML5 Fundamentals",
+      "CSS3 Basics",
+      "Responsive Web Design",
+      "JavaScript Essentials",
+      "DOM Manipulation and Events",
+      "Advanced CSS and JavaScript",
+      "Introduction to Web Frameworks(Reactjs/Nextjs/Expressjs)",
+      "Backend Basics",
+      "Project: Building a Full-Stack Web Application",
+    ]),
+    price: 149.99,
+    image_url: "/courses/web_course.png",
+  },
+];
+
+const invoices = [
+  {
+    customer_id: customers[0].id,
+    amount: 15795,
+    status: "pending",
+    date: "2022-12-06",
+  },
+  {
+    customer_id: customers[1].id,
+    amount: 20348,
+    status: "pending",
+    date: "2022-11-14",
+  },
+  {
+    customer_id: customers[4].id,
+    amount: 3040,
+    status: "paid",
+    date: "2022-10-29",
+  },
+  {
+    customer_id: customers[3].id,
+    amount: 44800,
+    status: "paid",
+    date: "2023-09-10",
+  },
+  {
+    customer_id: customers[5].id,
+    amount: 34577,
+    status: "pending",
+    date: "2023-08-05",
+  },
+  {
+    customer_id: customers[7].id,
+    amount: 54246,
+    status: "pending",
+    date: "2023-07-16",
+  },
+  {
+    customer_id: customers[6].id,
+    amount: 666,
+    status: "pending",
+    date: "2023-06-27",
+  },
+  {
+    customer_id: customers[3].id,
+    amount: 32545,
+    status: "paid",
+    date: "2023-06-09",
+  },
+  {
+    customer_id: customers[4].id,
+    amount: 1250,
+    status: "paid",
+    date: "2023-06-17",
+  },
+  {
+    customer_id: customers[5].id,
+    amount: 8546,
+    status: "paid",
+    date: "2023-06-07",
+  },
+  {
+    customer_id: customers[1].id,
+    amount: 500,
+    status: "paid",
+    date: "2023-08-19",
+  },
+  {
+    customer_id: customers[5].id,
+    amount: 8945,
+    status: "paid",
+    date: "2023-06-03",
+  },
+  {
+    customer_id: customers[2].id,
+    amount: 8945,
+    status: "paid",
+    date: "2023-06-18",
+  },
+  {
+    customer_id: customers[0].id,
+    amount: 8945,
+    status: "paid",
+    date: "2023-10-04",
+  },
+  {
+    customer_id: customers[2].id,
+    amount: 1000,
+    status: "paid",
+    date: "2022-06-05",
+  },
+];
+
+const revenue = [
+  { month: "Jan", revenue: 2000 },
+  { month: "Feb", revenue: 1800 },
+  { month: "Mar", revenue: 2200 },
+  { month: "Apr", revenue: 2500 },
+  { month: "May", revenue: 2300 },
+  { month: "Jun", revenue: 3200 },
+  { month: "Jul", revenue: 3500 },
+  { month: "Aug", revenue: 3700 },
+  { month: "Sep", revenue: 2500 },
+  { month: "Oct", revenue: 2800 },
+  { month: "Nov", revenue: 3000 },
+  { month: "Dec", revenue: 4800 },
+];
+
+module.exports = {
+  users,
+  customers,
+  invoices,
+  revenue,
+  courses,
+  categories,
+};
