@@ -1,14 +1,15 @@
 "use client";
+import { useBagStore } from "@/stores/bagStore";
+import { useMyCourses } from "@/stores/myCoursesStore";
+import { delay } from "@/utils/helper";
 import { DollarSignIcon } from "lucide-react";
+import { Session } from "next-auth";
+import { useRouter } from "next/navigation";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
-import { useBagStore } from "@/stores/bagStore";
 import { useToast } from "../ui/use-toast";
-import { useRouter } from "next/navigation";
-import { delay } from "@/utils/helper";
-import { useMyCourses } from "@/stores/myCoursesStore";
 
-const CheckoutPurchase = () => {
+const CheckoutPurchase = ({ session }: { session: Session | null }) => {
   const { bag } = useBagStore((state) => state);
   const { myCourses, addToMyCourses } = useMyCourses((state) => state);
   const { toast } = useToast();
@@ -16,18 +17,35 @@ const CheckoutPurchase = () => {
 
   if (bag === null) return <p>no items</p>;
 
+  // find current user entrolled
+  const userCourses = myCourses.filter(
+    (course) => course.user_email == session?.user?.email
+  );
+  const index = userCourses.findIndex((course) => course.title === bag.title);
+
   const handleEnroll = async () => {
     await delay().then(() => {
-      addToMyCourses(bag);
+      addToMyCourses({ ...bag, user_email: session?.user?.email });
       toast({
         title: "Succcessfully: Enrollment ",
         description: "You can start learning in My Courses section",
       });
-      router.push("/");
+      router.push("/my_courses");
     });
   };
   return (
     <div className="p-3">
+      {index !== -1 && (
+        <h2 className="text-sm sm:text-md font-medium tracking-tight transition-colors text-primary my-2">
+          {userCourses[index].title} course is already endrolled`
+        </h2>
+      )}
+      {!session?.user && (
+        <h2 className="text-sm sm:text-md font-medium tracking-tight transition-colors text-destructive my-2">
+          Please sign in first
+        </h2>
+      )}
+
       <h2 className="text-2xl sm:text-4xl font-medium tracking-tight transition-colors">
         Complete your purchase
       </h2>
@@ -47,7 +65,11 @@ const CheckoutPurchase = () => {
             placeholder="Card number (MM/YY CVC)"
             disabled
           />
-          <Button className="w-full p-7" onClick={handleEnroll}>
+          <Button
+            disabled={session?.user && index === -1 ? false : true}
+            className="w-full p-7"
+            onClick={handleEnroll}
+          >
             <DollarSignIcon />
             Purchase With Credit Card
           </Button>

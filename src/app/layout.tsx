@@ -7,6 +7,8 @@ import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";
 import NextjsLoading from "@/components/global/loading/NextjsLoadingTop";
 import { Toaster } from "@/components/ui/toaster";
+import { SessionProvider } from "next-auth/react";
+import { auth } from "@/auth";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -31,6 +33,7 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
+        {/* <SessionProvider session={sesssion}> */}
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -41,6 +44,7 @@ export default function RootLayout({
           {children}
           <Toaster />
         </ThemeProvider>
+        {/* </SessionProvider> */}
       </body>
     </html>
   );

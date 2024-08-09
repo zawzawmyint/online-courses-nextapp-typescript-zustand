@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import { UserIcon } from "lucide-react";
 import React, { Suspense } from "react";
+import { auth } from "@/auth";
 
 const Links: {
   title: string | React.ReactNode;
@@ -33,22 +34,21 @@ const Links: {
   },
 ];
 
-export function NavigationItems() {
-  const isSignIn = false;
-
+export async function NavigationItems() {
+  const session = await auth();
   const AuthLinks: {
     title: string | React.ReactNode;
     href: string;
     category: boolean;
   }[] = [
     {
-      title: "New User",
-      href: "/users/sign_up",
+      title: session?.user ? "My Courses" : "New User",
+      href: session?.user ? "/my_courses" : "/users/sign_up",
       category: false,
     },
     {
-      title: isSignIn ? <UserIcon /> : "Sign In",
-      href: isSignIn ? "/profile" : "/users/sign_in",
+      title: session?.user ? <UserIcon /> : "Sign In",
+      href: session?.user ? "/profile" : "/users/sign_in",
       category: false,
     },
   ];
@@ -77,15 +77,6 @@ export function NavigationItems() {
             )}
           </NavigationMenuItem>
         ))}
-        {isSignIn && (
-          <NavigationMenuItem>
-            <Link href={"/my_courses"} legacyBehavior passHref>
-              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                <span className="text-primary font-semibold">My Courses</span>
-              </NavigationMenuLink>
-            </Link>
-          </NavigationMenuItem>
-        )}
         {AuthLinks.map((l, i) => (
           <NavigationMenuItem key={i}>
             <Link href={l.href} legacyBehavior passHref>

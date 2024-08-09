@@ -8,6 +8,10 @@ export type User = {
   email: string;
   password: string;
 };
+export type UserSession = {
+  name: string;
+  email: string;
+};
 
 export type Customer = {
   id: string;

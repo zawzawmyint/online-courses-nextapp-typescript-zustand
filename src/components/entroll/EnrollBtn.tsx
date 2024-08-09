@@ -4,6 +4,7 @@ import { useBagStore } from "@/stores/bagStore";
 import { useRouter } from "next/navigation";
 import { Button } from "../ui/button";
 import { useMyCourses } from "@/stores/myCoursesStore";
+import { useSession } from "next-auth/react";
 
 type EnrollPropsType = {
   variant?:
@@ -22,6 +23,8 @@ const EnrollBtn = ({ variant = "default", course }: EnrollPropsType) => {
   const { bag, addToBag } = useBagStore((state) => state);
   const { myCourses } = useMyCourses((state) => state);
   const router = useRouter();
+  // const session = useSession();
+  // && session.data?.user?.email === item.user_email
 
   function checkIsEnrolled(): boolean {
     const index = myCourses.findIndex((item) => item.id === course.id);
@@ -35,7 +38,8 @@ const EnrollBtn = ({ variant = "default", course }: EnrollPropsType) => {
     }
   };
 
-  const isEnrolled = checkIsEnrolled();
+  // const isEnrolled = checkIsEnrolled();
+  const isEnrolled = false;
 
   return (
     <Button

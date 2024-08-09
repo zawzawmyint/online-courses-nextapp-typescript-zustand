@@ -1,12 +1,11 @@
 import React from "react";
 import CourseFilterAndSearch from "./FilterAndSearch/CourseFilterAndSearch";
+import PageTitle from "../generic/PageTitle";
 
 const CourseHeader = () => {
   return (
     <>
-      <h4 className="scroll-m-20 text-lg font-semibold tracking-tight my-5">
-        Courses
-      </h4>
+      <PageTitle title="Courses" />
       <CourseFilterAndSearch />
     </>
   );

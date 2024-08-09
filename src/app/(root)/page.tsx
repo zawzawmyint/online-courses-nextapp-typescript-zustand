@@ -8,7 +8,7 @@ import Instructor from "@/components/instructor/Instructor";
 import SpecialPricingTime from "@/components/special-pricing/SpecialPricingTime";
 import { Suspense } from "react";
 
-export default async function Home() {
+export default function Home() {
   return (
     <div>
       <HeroSection>

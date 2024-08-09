@@ -1,14 +1,21 @@
+import { auth } from "@/auth";
+import PageTitle from "@/components/generic/PageTitle";
+import ViewMore from "@/components/generic/ViewMore";
 import BaseContainer from "@/components/global/container/BaseContainer";
 import MyCourses from "@/components/my-courses/MyCourses";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { redirect } from "next/navigation";
 import React from "react";
 
-const Page = () => {
+const Page = async () => {
+  const session = await auth();
+  if (!session?.user) return redirect("/");
+
   return (
     <BaseContainer>
-      <h4 className="scroll-m-20 text-lg font-semibold tracking-tight my-5 ">
-        My Courses
-      </h4>
-      <MyCourses />
+      <PageTitle title="My Courses" />
+      <MyCourses session={session} />
     </BaseContainer>
   );
 };

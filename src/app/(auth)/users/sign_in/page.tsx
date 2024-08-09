@@ -1,11 +1,16 @@
+import { auth } from "@/auth";
 import AuthContainer from "@/components/auth/AuthContainer";
 import FormWrapper from "@/components/auth/FormWrapper";
 import { SignInForm } from "@/components/auth/sign_in/SignInForm";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import React from "react";
 
-const Page = () => {
+const Page = async () => {
+  const session = await auth();
+  if (session?.user) return redirect("/");
+
   return (
     <AuthContainer>
       <FormWrapper>

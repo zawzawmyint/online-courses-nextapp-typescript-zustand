@@ -1,6 +1,11 @@
 import { sql } from "@vercel/postgres";
 import { unstable_noStore as noStore } from "next/cache";
-import { CategoryField, CourseField, InstructorField } from "@/lib/definitions";
+import {
+  CategoryField,
+  CourseField,
+  InstructorField,
+  User,
+} from "@/lib/definitions";
 
 export async function fetchLatestCourses(): Promise<CourseField[]> {
   noStore();
@@ -149,5 +154,15 @@ export async function getInstructorById(id: string) {
   } catch (error) {
     console.error("Database Error:", error);
     throw new Error("Failed to fetch customer.");
+  }
+}
+
+export async function getUser(email: string): Promise<User> {
+  try {
+    const user = await sql<User>`SELECT * FROM users WHERE email=${email}`;
+    return user.rows[0];
+  } catch (error) {
+    console.error("Failed to fetch user:", error);
+    throw new Error("Failed to fetch user.");
   }
 }
