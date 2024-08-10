@@ -34,7 +34,7 @@ const links: { name: string; path: string; category: boolean }[] = [
 const Footer = () => {
   return (
     <BaseContainer>
-      <footer className="opacity-50">
+      <footer className="opacity-50 bottom-0">
         <div className="flex flex-col sm:flex-row sm:justify-between items-center my-7 gap-5 ">
           <div className="flex flex-wrap gap-5 justify-center items-center">
             {links.map((link, index) => (

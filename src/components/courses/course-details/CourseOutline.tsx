@@ -3,11 +3,21 @@ import { Accordion } from "@/components/ui/accordion";
 import { CourseField } from "@/lib/definitions";
 import { useMyCourses } from "@/stores/myCoursesStore";
 import CourseOutlineItem from "./CourseOutlineItem";
+import { Session } from "next-auth";
 
-export function CourseOutline({ course }: { course: CourseField }) {
+export function CourseOutline({
+  session,
+  course,
+}: {
+  session: Session | null;
+  course: CourseField;
+}) {
   const { myCourses } = useMyCourses((state) => state);
   function checkIsEnrolled(): boolean {
-    const index = myCourses.findIndex((item) => item.id === course.id);
+    const index = myCourses.findIndex(
+      (item) =>
+        item.id === course.id && item.user_email === session?.user?.email
+    );
     return index >= 0;
   }
 

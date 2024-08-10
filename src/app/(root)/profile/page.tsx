@@ -11,11 +11,10 @@ const Page = async () => {
   return (
     <BaseContainer>
       <div className="flex items-center gap-2">
-        <PageTitle title="My Account" />(
+        <PageTitle title="My Account" /> -
         <p className="text-lg font-semibold">
           {session?.user.name?.toUpperCase()}
         </p>
-        )
       </div>
       <Profile />
     </BaseContainer>

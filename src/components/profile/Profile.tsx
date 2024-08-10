@@ -5,7 +5,7 @@ import { Button } from "../ui/button";
 
 const Profile = () => {
   return (
-    <div className="flex flex-wrap items-center">
+    <div className="flex flex-wrap min-h-96">
       <ViewMore />
       <form
         action={async () => {

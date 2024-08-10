@@ -13,7 +13,7 @@ const MyCourses = ({ session }: { session: Session }) => {
   return (
     <>
       <ViewMore />
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 my-10">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 my-10 min-h-64">
         {userCourses.length > 0 &&
           userCourses.map((course) => (
             <CourseCard3 key={course?.title} course={course} />
