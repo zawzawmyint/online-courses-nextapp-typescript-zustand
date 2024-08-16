@@ -9,7 +9,7 @@ const HeroSection = ({
 }) => {
   return (
     <section
-      className={`bg-primary min-h-[28rem] grid place-items-center w-full sticky left-0 ${position} -z-10 `}
+      className={`bg-primary min-h-[28rem] grid place-items-center w-full sticky left-0 ${position} `}
     >
       {children}
     </section>
