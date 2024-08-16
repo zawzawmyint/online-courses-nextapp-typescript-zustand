@@ -1,9 +1,16 @@
 import React from "react";
-import HomeSection from "../home/HomeSection";
 
-const HeroSection = ({ children }: { children: React.ReactNode }) => {
+const HeroSection = ({
+  children,
+  position = "top-20",
+}: {
+  children: React.ReactNode;
+  position?: string;
+}) => {
   return (
-    <section className="bg-primary min-h-[28rem] grid place-items-center ">
+    <section
+      className={`bg-primary min-h-[28rem] grid place-items-center w-full sticky left-0 ${position} -z-10 `}
+    >
       {children}
     </section>
   );

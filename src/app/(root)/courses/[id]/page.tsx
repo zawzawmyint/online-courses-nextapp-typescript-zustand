@@ -13,7 +13,7 @@ const page = ({ params }: { params: { id: string } }) => {
           <CourseDetails id={params.id} />
         </Suspense>
       </BaseContainer>
-      <HeroSection>
+      <HeroSection position="bottom-32">
         <Tipsection id={params.id} />
       </HeroSection>
     </div>
